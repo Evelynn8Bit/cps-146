@@ -1,0 +1,15 @@
+{
+    "name": "evelynn8bit/cps-146",
+    "autoload": {
+        "psr-4": {
+            "Evelynn8bit\\Cps146\\": "Public/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ev Hudson",
+            "email": "evenlynn.h22@gmail.com"
+        }
+    ],
+    "require": {}
+}

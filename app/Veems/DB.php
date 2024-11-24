@@ -1,6 +1,7 @@
 <?php
-require_once 'env.php';
+namespace Veems;
 
+require_once 'ENV.php';
 class DB
 {
     private static $CON = null;  // Static connection variable
@@ -8,7 +9,7 @@ class DB
 
     private function __construct()
     {
-        loadEnv(__DIR__ . '/.env');
+        loadEnv(__DIR__ . '/../.env');
         self::$CON = [
             "host" => $_ENV['DB_HOST'],
             "port" => $_ENV['DB_PORT'],
@@ -34,15 +35,16 @@ class DB
             $dsn = "$connection:host=" . self::$CON['host'] . ";port=" . self::$CON['port'] . ";dbname=" . self::$CON['dbname'] . ";charset=utf8mb4";
 
             $options = [
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                PDO::ATTR_EMULATE_PREPARES => false,
+                \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+                \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
+                \PDO::ATTR_EMULATE_PREPARES => false,
             ];
 
-            self::$pdo = new PDO($dsn, self::$CON['username'], self::$CON['password'], $options);
+            self::$pdo = new \PDO($dsn, self::$CON['username'], self::$CON['password'], $options);
+
 
             echo "Database connection established successfully!";
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             die("Database connection failed: " . $e->getMessage());
         }
     }
@@ -53,7 +55,7 @@ class DB
             $stmt = self::getInstance()->prepare($sql);
             $stmt->execute($params);
             return $stmt->fetchAll();
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             die("Query failed: " . $e->getMessage());
         }
     }
@@ -63,7 +65,7 @@ class DB
         try {
             $stmt = self::getInstance()->prepare($sql);
             return $stmt->execute($params);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             die("Query execution failed: " . $e->getMessage());
         }
     }

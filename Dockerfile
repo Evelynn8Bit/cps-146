@@ -13,8 +13,11 @@ RUN apt-get update && apt-get install -y \
 # Install Composer globally
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Copy the app directory to /app
+# Copy the app directory (website files) to /app
 COPY app /app
+
+# Copy the composer.json file to the project root
+COPY app/composer.json /app/composer.json
 
 # Set the correct ownership and permissions for the app directory
 RUN chown -R www-data:www-data /app && chmod -R 755 /app

@@ -1,6 +1,6 @@
 <?
 
-namespace Class;
+namespace Veems;
 
 class User {
   

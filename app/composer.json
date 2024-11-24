@@ -1,8 +1,8 @@
 {
-    "name": "evelynn8bit/cps-146",
+    "name": "cps-146/app",
     "autoload": {
         "psr-4": {
-            "Evelynn8bit\\Cps146\\": "Public/"
+            "Veems\\": "Veems/"
         }
     },
     "authors": [
@@ -10,6 +10,5 @@
             "name": "Ev Hudson",
             "email": "evenlynn.h22@gmail.com"
         }
-    ],
-    "require": {}
+    ]
 }

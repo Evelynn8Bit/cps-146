@@ -2,7 +2,7 @@
 namespace Veems;
 
 require_once 'ENV.php';
-class DB
+class db
 {
     private static $CON = null;  // Static connection variable
     private static $pdo = null;  // Static PDO instance

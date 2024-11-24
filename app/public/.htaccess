@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteBase /
+# Remove .php extension
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [L]
+
+# Redirect all requests to index.php (SPA behavior)
+RewriteRule ^(?!index\.php).* index.php [L]
